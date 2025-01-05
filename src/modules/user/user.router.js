@@ -8,7 +8,7 @@ import userModel from "../../../DB/model/user.model.js";
 import { auth, roles } from "../../middleware/auth.js";
 const router = Router();
 const { Admin, Supervisor, Employee } = roles;
-router.post("/team", auth([Admin,Supervisor,Employee]), authController.getUsers);
+router.get("/team", authController.getUsers);
 router.post("/notification", auth([Admin,Supervisor,Employee]), authController.notification);
 router.post("/signup", validation(validators.signup), authController.signup);
 router.put("/update",ImageUpload(fileValidation.image).single("image"),auth([Admin, Supervisor, Employee]),authController.updateUser)
