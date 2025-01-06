@@ -7,28 +7,28 @@ import MessageModel from "../../../../DB/model/Message.model.js";
 import userModel from "../../../../DB/model/user.model.js"
 
 export const getUsers = asyncHandler(async (req, res) => {
-  // const { id } = req.user
+  const { id } = req.user
   let Team
-  // if (req.user.role === "Admin") {
-  //    Team = await userModel.find(
-  //     {
-  //     $and: [
-  //       { role: 'Supervisor' },
-  //       { _id: { $ne: id } }
-  //     ]
-  //   }
-  // );
-  // } else if(req.user.role==="Supervisor") {
+  if (req.user.role === "Admin") {
+     Team = await userModel.find(
+      {
+      $and: [
+        { role: 'Supervisor' },
+        { _id: { $ne: id } }
+      ]
+    }
+  );
+  } else if(req.user.role==="Supervisor") {
      Team = await userModel.find()
-  //     {
-  //     $and: [
-  //       { role: 'Employee' },
-  //       { _id: { $ne: id } }
-  //     ]
-  //   }
-  // );
+      {
+      $and: [
+        { role: 'Employee' },
+        { _id: { $ne: id } }
+      ]
+    }
+  );
 
-  // }
+  }
   return res.status(200).json({ Team });
 });
 export const notification = asyncHandler(async (req, res) => {
