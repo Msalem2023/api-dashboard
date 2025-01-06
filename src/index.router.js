@@ -10,7 +10,7 @@ import postRouter from "./modules/Post/Post.router.js"
 
 
 const initApp = (app, express) => {
-mongoose.connect('mongodb+srv://muhammedsalem17:9jdwTha4FINedsXK@cluster0.p3afx.mongodb.net/
+mongoose.connect('mongodb+srv://muhammedsalem17:9jdwTha4FINedsXK@cluster0.p3afx.mongodb.net/Dashboard?retryWrites=true&w=majority
 ', { 
         useNewUrlParser: true, 
         useUnifiedTopology: true 
